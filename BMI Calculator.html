@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Enter Your Weight</h1>
+    <input id="weight" type="number" placeholder="Weight">
+    <h1>Enter Your Height</h1>
+    <input id="height" type="number" placeholder="Height">
+    <br>
+    <button onclick="cal()" >Calculate BMI</button>
+    <br>
+    <h2 id="result"></h2>
+    </body>
+    <script>
+
+function cal(){
+    let wt=document.getElementById("weight").value;
+let ht=document.getElementById("height").value;
+let a=Number(wt)
+let b=Number(ht)/100
+let report=document.getElementById("result");
+let check=parseInt(a/(b*b))
+let remark=""
+if(check<=18.4){
+    remark="UnderWeight";
+}else if(check>=18.5 && check<=24.9){
+    remark="Normal Weight"
+}else if(check>=25 && check<=29.9){
+    remark="Overweight"
+}else if(check>=30){
+    remark="Obese"
+}
+let disp="Your BMI is"+" "+check+" "+"which means you are"+" "+remark;
+report.innerText=disp
+}
+    </script>
+</html>
+

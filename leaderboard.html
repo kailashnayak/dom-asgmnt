@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <style>
+        #leaderboard {
+            width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        input[type="number"] {
+            width: 300px;
+        }
+     
+    </style>
+</head>
+<body>
+    <div id="leaderboard">
+        <h1>Leaderboard</h1>
+        <br><br>
+        <div>
+            MIN: <span id="minScore">N/A</span>
+            <br>
+            MAX: <span id="maxScore">N/A</span>
+        </div>
+        <br>
+        <button onclick="updateScores()">ENTER</button>
+        <br><br>
+        <div>
+            SCORE: <span id="currentScore">N/A</span>
+        </div>
+        <br>
+        <div >
+            <button onclick="Score(1)">1</button>
+            <button onclick="Score(2)">2</button>
+            <button onclick="Score(3)">3</button>
+            <br>
+            <button onclick="Score(4)">4</button>
+            <button onclick="Score(5)">5</button>
+            <button onclick="Score(6)">6</button>
+            <br>
+            <button onclick="Score(7)">7</button>
+            <button onclick="Score(8)">8</button>
+            <button onclick="Score(9)">9</button>
+            <br>
+            <button onclick="Score(0)">0</button>
+        </div>
+    </div>
+    <script>
+        let currentScore = '';
+
+        function Score(number) {
+            currentScore += number;
+            document.getElementById('currentScore').innerText = currentScore;
+        }
+
+        function updateScores() {
+            const currentScoreInt = parseInt(currentScore);
+            const minScore = document.getElementById('minScore');
+            const maxScore = document.getElementById('maxScore');
+            
+            const currentMin = parseInt(minScore.innerText) || Infinity;
+            const currentMax = parseInt(maxScore.innerText) || -Infinity;
+
+            if (currentScoreInt < currentMin) {
+                minScore.innerText = currentScoreInt;
+            }
+
+            if (currentScoreInt > currentMax) {
+                maxScore.innerText = currentScoreInt;
+               
+            }
+
+            currentScore = '';
+            document.getElementById('currentScore').innerText = 'N/A';
+        }
+    </script>
+</body>
+</html>
